@@ -1,3 +1,4 @@
+import dotenv
 from flask import Flask, render_template, redirect, url_for, flash, abort
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
@@ -10,11 +11,15 @@ from forms import CreatePostForm
 from flask_gravatar import Gravatar
 import forms
 from functools import wraps
+import os
+from dotenv import load_dotenv
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = str(dotenv.get_key(".env", "APP_KEY"))
 ckeditor = CKEditor(app)
 Bootstrap(app)
+
 
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
