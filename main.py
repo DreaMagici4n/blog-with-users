@@ -11,8 +11,7 @@ from forms import CreatePostForm
 from flask_gravatar import Gravatar
 import forms
 from functools import wraps
-import os
-from dotenv import load_dotenv
+
 
 
 app = Flask(__name__)
